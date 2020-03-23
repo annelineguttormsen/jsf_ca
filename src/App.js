@@ -17,7 +17,7 @@ function App() {
     <div className="App">
       <Router>
         <NavBarMenu/>
-        <Container>
+        <Container fluid>
           <Switch>
             <Route component={Home} path="/" exact/>
             <Route component={Contact} path="/contact"/>
