@@ -26,12 +26,15 @@ export default function Home () {
 
     return (
         <Container>
+            <br/>
+            {/* TODO: GJØR OM TIL EGET KOMPONENT */}
             <InputGroup className="search">
                 <FormControl
                     placeholder="Search"
                     // onChange={event => handleSearch(event)}
                 />
             </InputGroup>
+            <br/>
             <Row>
                 {
                     state.games

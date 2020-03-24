@@ -1,6 +1,7 @@
 import React from "react";
 import Col from 'react-bootstrap/Col'
-import Button from 'react-bootstrap/Button'
+
+import { Link } from "react-router-dom";
 
 export default function GameListItem(props) {
     return (
@@ -9,7 +10,7 @@ export default function GameListItem(props) {
             <img src={props.img} alt={props.title}/>
             <p>Rating: {props.rating}</p>
             <p>Release date: {props.releaseDate}</p>
-            <Button href={"/game/:" + props.id}>Read more</Button>
+            <Link className="btn btn-primary" to={"/game/" + props.id}>Read More about {props.title}</Link>
         </Col>
     )
 }
