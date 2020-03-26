@@ -9,7 +9,8 @@ import './App.css';
 
 //bootstrap komponenter
 import Container from 'react-bootstrap/Container';
-import Col from 'react-bootstrap/Col'
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 //komponenter
 import NavBarMenu from "./components/NavBarMenu.js";
@@ -21,7 +22,7 @@ function App() {
     <div className="App">
       <Router>
         <NavBarMenu/>
-        <Container fluid>
+        <Container>
           <Switch>
             <Route component={Home} path="/" exact/>
             <Route component={Contact} path="/contact"/>
@@ -60,11 +61,13 @@ function GameDetails() {
 
   if (currentGame !== undefined) {
     return (
+      <Row>
       <Col lg={12}>
         <h2>{currentGame.name}</h2>
         <img src={currentGame.background_image} alt={currentGame.name}/>
-        <a classname="btn btn-primary" href={currentGame.stores[0].url_en}>Website Link</a>
+        <a className="btn btn-primary" href={currentGame.stores[0].url_en}>Website Link</a>
       </Col>
+      </Row>
     )
   } else {
     return null
