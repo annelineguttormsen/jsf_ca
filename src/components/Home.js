@@ -21,17 +21,28 @@ export default function Home () {
             })
         }, []
     );
+
+    function handleSearch(event) {
+        console.log(event.target.value);
+        let query = event.target.value.toLowerCase();
+        let filteredArray = state.games.filter((i)=> {
+            if (i.name.toLowerCase().indexOf(query)!== -1) {
+                return i;
+            }
+        });
+        console.log(query, filteredArray);
+        setState({games: filteredArray});
+    }
     
     console.log("dette er state games", state.games);
 
     return (
         <Container>
             <br/>
-            {/* TODO: GJØR OM TIL EGET KOMPONENT */}
             <InputGroup className="search">
                 <FormControl
                     placeholder="Search"
-                    // onChange={event => handleSearch(event)}
+                    onChange={event => handleSearch(event)}
                 />
             </InputGroup>
             <br/>
