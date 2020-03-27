@@ -22,3 +22,6 @@ img {
 .form-group {
   text-align:left;
 }
+.form-group .btn {
+  text-align:left!important;
+}

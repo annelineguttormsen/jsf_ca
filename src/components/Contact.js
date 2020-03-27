@@ -32,8 +32,10 @@ export default function Contact () {
         validationSchema: schema
     });
     
-    const onSubmit = (data, e) => {
-		console.log("data", data, e);
+    //yeah NOW you work
+    //fuck u onsubmit
+    const onSubmit = (data) => {
+		console.log("onsubmit har blitt tilkalt", data);
     };
     
     return (
@@ -47,8 +49,8 @@ export default function Contact () {
             </Form.Group>
             <Form.Group>
                 <Form.Label>Last Name</Form.Label>
-                <Form.Control name="firstName" placeholder="Smith" ref={register}/>
-                {errors.firstName && <ErrorMessage text={errors.lastName.message}></ErrorMessage>}
+                <Form.Control name="lastName" placeholder="Smith" ref={register}/>
+                {errors.lastName && <ErrorMessage text={errors.lastName.message}></ErrorMessage>}
             </Form.Group>
             <Form.Group>
                 <Form.Label>E-mail</Form.Label>
