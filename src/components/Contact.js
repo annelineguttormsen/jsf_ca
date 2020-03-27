@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import ErrorMessage from "./ErrorMessage";
@@ -24,18 +24,18 @@ const schema = yup.object().shape({
         .string()
         .required("Must contain a message")
         .min(10,"Message must be longer than 10 characters")
-    
 });
 
 export default function Contact () {
-    const { register, handleSubmit, errors } = useForm({
+    const { register, handleSubmit, errors, formState } = useForm({
         validationSchema: schema
     });
     
     //yeah NOW you work
     //fuck u onsubmit
     const onSubmit = (data) => {
-		console.log("onsubmit har blitt tilkalt", data);
+        console.log("onsubmit har blitt tilkalt", data);
+        console.log(formState);
     };
     
     return (
@@ -63,6 +63,7 @@ export default function Contact () {
                 {errors.messageString && <ErrorMessage text={errors.messageString.message}></ErrorMessage>}
             </Form.Group>
             <Button type="submit">Submit</Button>
+            {formState.isValid == true && <p>Form successfully validated!</p>}
         </Form>
         </>
     )
