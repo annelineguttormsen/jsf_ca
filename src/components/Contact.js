@@ -32,9 +32,9 @@ export default function Contact () {
         validationSchema: schema
     });
     
-    function onSubmit(data) {
-		console.log("data", data);
-    }
+    const onSubmit = (data, e) => {
+		console.log("data", data, e);
+    };
     
     return (
         <>
@@ -42,22 +42,22 @@ export default function Contact () {
         <Form onSubmit={handleSubmit(onSubmit)}>
             <Form.Group>
                 <Form.Label>First Name</Form.Label>
-                <Form.Control name="firstName" placeholder="John" ref={register({required:true})}/>
+                <Form.Control name="firstName" placeholder="John" ref={register}/>
                 {errors.firstName && <ErrorMessage text={errors.firstName.message}></ErrorMessage>}
             </Form.Group>
             <Form.Group>
                 <Form.Label>Last Name</Form.Label>
-                <Form.Control name="firstName" placeholder="Smith" ref={register({required:true})}/>
+                <Form.Control name="firstName" placeholder="Smith" ref={register}/>
                 {errors.firstName && <ErrorMessage text={errors.lastName.message}></ErrorMessage>}
             </Form.Group>
             <Form.Group>
                 <Form.Label>E-mail</Form.Label>
-                <Form.Control name="eMail" placeholder="john.smith@gmail.com" ref={register({required:true})}/>
+                <Form.Control name="eMail" placeholder="john.smith@gmail.com" ref={register}/>
                 {errors.eMail && <ErrorMessage text={errors.eMail.message}></ErrorMessage>}
             </Form.Group>
             <Form.Group>
                 <Form.Label>Message</Form.Label>
-                <Form.Control as="textarea" name="messageString" placeholder="Write your message here" ref={register({required:true})}/>
+                <Form.Control as="textarea" name="messageString" placeholder="Write your message here" ref={register}/>
                 {errors.messageString && <ErrorMessage text={errors.messageString.message}></ErrorMessage>}
             </Form.Group>
             <Button type="submit">Submit</Button>

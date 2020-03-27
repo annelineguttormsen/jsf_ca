@@ -19,3 +19,6 @@ img {
 .errormessage {
   color:red;
 }
+.form-group {
+  text-align:left;
+}
