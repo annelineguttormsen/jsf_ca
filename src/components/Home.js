@@ -10,31 +10,35 @@ export default function Home () {
     const [state, setState] = useState({
         games: []
     });
+    const [constantArray,setConstantArray] = useState({
+        gameArray: []
+    });
 
     useEffect(
         function() {
             fetch("https://api.rawg.io/api/games")
             .then(response => response.json())
             .then(response => response = response.results)
-            .then(function(games){ 
+            .then(function(games){
                 setState({games: games});
-            })
+                setConstantArray({gameArray: games});
+            });
         }, []
     );
+    console.log("state games",state.games);
 
     function handleSearch(event) {
-        console.log(event.target.value);
+        console.log("du søkte for", event.target.value);
         let query = event.target.value.toLowerCase();
-        let filteredArray = state.games.filter((i)=> {
+        let filteredArray = constantArray.gameArray;
+        console.log("filtered array", filteredArray);
+        filteredArray = filteredArray.filter((i)=> {
             if (i.name.toLowerCase().indexOf(query)!== -1) {
                 return i;
             }
         });
-        console.log(query, filteredArray);
         setState({games: filteredArray});
     }
-    
-    console.log("dette er state games", state.games);
 
     return (
         <Container>
@@ -49,8 +53,8 @@ export default function Home () {
             <Row>
                 {
                     state.games
-                    .map(index => <GameListItem 
-                        title={index.name} 
+                    .map(index => <GameListItem
+                        title={index.name}
                         img={index.background_image}
                         rating={index.rating}
                         releaseDate={index.released}
